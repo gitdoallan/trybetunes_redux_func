@@ -1,0 +1,6 @@
+.search-main-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+}

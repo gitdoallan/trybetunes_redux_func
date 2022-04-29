@@ -5,15 +5,16 @@ import SearchInput from '../components/SearchInput';
 import SearchResults from '../components/SearchResults';
 import Footer from '../components/Footer';
 
+import '../styles/pages/Search.css';
+
 export default function Search() {
   const { searchTerm } = useSelector(({ reducer }) => (reducer));
   return (
-    <div>
+    <main className="search-main-container">
       <Header />
-      <h1>Search</h1>
       <SearchInput />
       {searchTerm && <SearchResults />}
       <Footer />
-    </div>
+    </main>
   );
 }

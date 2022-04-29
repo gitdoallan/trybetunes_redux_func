@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as EmailValidator from 'email-validator';
 
+import '../styles/pages/Login.css';
+
 export default function Login() {
   const [dados, setDados] = useState({ nome: '', email: '' });
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -32,36 +34,38 @@ export default function Login() {
   }, [nome, email]);
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={ handleSubmit }>
-        <label htmlFor="nome">
-          Nome:
-          <input
-            type="text"
-            name="nome"
-            id="nome"
-            value={ nome }
-            onChange={ onChange }
-          />
-        </label>
-        <label htmlFor="email">
-          Email:
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={ email }
-            onChange={ onChange }
-          />
-        </label>
-        <button
-          disabled={ btnDisabled }
-          type="submit"
-        >
-          Entrar
-        </button>
-      </form>
+    <div className="container-login">
+      <section className="login-content">
+        <h1>Login</h1>
+        <form onSubmit={ handleSubmit }>
+          <label htmlFor="nome">
+            Nome:
+            <input
+              type="text"
+              name="nome"
+              id="nome"
+              value={ nome }
+              onChange={ onChange }
+            />
+          </label>
+          <label htmlFor="email">
+            Email:
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={ email }
+              onChange={ onChange }
+            />
+          </label>
+          <button
+            disabled={ btnDisabled }
+            type="submit"
+          >
+            Entrar
+          </button>
+        </form>
+      </section>
     </div>
   );
 }

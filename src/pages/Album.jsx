@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+
 import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../styles/pages/Album.css';
 
 export default function Album() {
   const { id } = useParams();
   const [musics, setMusics] = useState([]);
+  const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
     const getAlbum = async () => {
@@ -18,15 +22,15 @@ export default function Album() {
   }, [id]);
 
   return (
-    <div>
+    <main className="album-main-container">
       <Header />
       <h1>Album</h1>
-      <ul>
+      <div className="musics-results">
         {musics.map((element) => (
-          <div key={ element.trackId }>
-            <li>
+          <div className="card-music" key={ element.trackId }>
+            <h4>
               {element.trackName}
-            </li>
+            </h4>
             <audio data-testid="audio-component" src={ element.previewUrl } controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
@@ -34,14 +38,21 @@ export default function Album() {
               <code>audio</code>
               .
             </audio>
-            <label htmlFor={ element.trackId }>
-              Favorita
-              <input id={ element.trackId } type="checkbox" />
+            <label className="button-label" htmlFor={ element.trackId }>
+              {/* Favorita
+              <input id={ element.trackId } type="checkbox" /> */}
+              <button onClick={ () => setFavorite(!favorite) } type="button">
+                { favorite ? (
+                  <AiFillHeart className="heart" />
+                ) : (
+                  <AiOutlineHeart className="heart" />
+                )}
+              </button>
             </label>
           </div>
         ))}
-      </ul>
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 }

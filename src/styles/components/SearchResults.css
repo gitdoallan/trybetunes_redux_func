@@ -1,0 +1,54 @@
+.results-container {
+  width: 85%;
+}
+
+.results-container .align {
+  margin: 30px auto;
+  text-align: center;
+}
+
+
+.results-content {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.results-content .card {
+  background-color: black;
+  border-radius: 8px;
+  color: white;
+  height: 300px;
+  margin-bottom: 20px;
+  padding: 5px;
+  transition: 0.5s;
+  width: 19%;
+}
+
+.results-content .card:hover {
+  background-color: rgb(51, 51, 51);
+  transform: scale(1.05);
+}
+
+.results-content .card a {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+.results-content .card a h4 {
+  height: 60px;
+  overflow-y: hidden;
+  width: 94%;
+}
+
+.results-content .card a img {
+  border-radius: 8px;
+  width: 94%;
+}

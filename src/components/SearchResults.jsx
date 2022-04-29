@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import '../styles/components/SearchResults.css';
 
 export default function SearchResults() {
   const { searchTerm } = useSelector(({ reducer }) => (reducer));
@@ -17,26 +18,28 @@ export default function SearchResults() {
   }, [searchTerm]);
 
   return (
-    <div>
-      <h1>
-        Resultados da busca por:
-        {' '}
-        {searchTerm}
-      </h1>
+    <section className="results-container">
+      <div className="align">
+        <h1>
+          Resultados da busca por:
+          {' '}
+          {searchTerm}
+        </h1>
+      </div>
       {loading
         ? (<span>Carregando...</span>)
         : (
-          <ul>
+          <div className="results-content">
             {results.map((element) => (
-              <li key={ element.collectionId }>
+              <div className="card" key={ element.collectionId }>
                 <Link to={ `/album/${element.collectionId}` }>
                   <img src={ element.artworkUrl100 } alt={ element.collectionName } />
-                  <h3>{element.collectionName}</h3>
+                  <h4>{element.collectionName}</h4>
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
-    </div>
+    </section>
   );
 }

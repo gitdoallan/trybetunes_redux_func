@@ -1,0 +1,20 @@
+footer {
+  align-items: center;
+  background-color: rgb(47, 47, 47);
+  display: flex;
+  height: 50px;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+footer a {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+footer a:hover {
+  transform: scale(1.1);
+}
