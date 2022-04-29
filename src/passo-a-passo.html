@@ -1,0 +1,74 @@
+1. Instalar o Redux (Projetos da Trybe geralmente já vem instalado)
+npm install --save-dev react-redux
+npm install redux
+
+=================
+
+2. Configurar a store
+- Criar pasta store com o arquivo index.js
+
+conteúdo do arquivo:
+
+import { createStore } from 'redux';
+import rootReducer from '../reducers/index';
+
+const store = createStore(rootReducer);
+
+export default store;
+
+=================
+
+3. Atualizar o index.js
+
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
+Envolver o App conforme a linha de código abaixo:
+
+<Provider store={ store }>
+  <App />
+</Provider>,
+
+==============
+
+
+4. Criar a pasta reducer e o arquivo index.js
+
+conteudo do arquivo:
+
+import { combineReducers } from 'redux';
+import reducer from './reducer';
+
+const rootReducer = combineReducers({ reducer });
+
+export default rootReducer;
+
+(reducer é o nome(s) do reducer(s) que você vai utilizar)
+
+
+5. Criar um reducer base. 
+
+Exemplo:
+
+const INITIAL_STATE = {
+  name: '',
+};
+
+export default function reducer(state = INITIAL_STATE, { type, payload }) {
+  const cases = {
+    SET_NAME: { ...state, ...payload },
+  };
+  return cases[type] || state;
+}
+
+export default function reducer(state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case 'SET_NAME':
+      return {
+        ...state,
+        name: action.name,
+      };
+    default:
+      return state;
+  }
+}
